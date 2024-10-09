@@ -143,6 +143,8 @@
                 type="number"
                 class="text-field__input js-input-count js-generate"
                 value="10"
+                max="100"
+                min="1"
               />
             </label>
 
@@ -152,6 +154,8 @@
                 type="number"
                 class="text-field__input js-input-length js-generate"
                 value="15"
+                max="30"
+                min="1"
               />
             </label>
           </div>
@@ -197,13 +201,18 @@
       const makePasswords = () => {
         let symbols = document.querySelector(".js-input-symbols").value;
 
-        let length = 10;
-        if (document.querySelector(".js-input-length"))
-          length = document.querySelector(".js-input-length").value;
+        let length = 0;
+        let count = 0;
 
-        let count = 10;
+        if (document.querySelector(".js-input-length"))
+          length = Number(document.querySelector(".js-input-length").value);
+        if (length > 30) length = 30;
+        if (length <= 1) length = 15;
+
         if (document.querySelector(".js-input-count"))
-          count = document.querySelector(".js-input-count").value;
+          count = Number(document.querySelector(".js-input-count").value);
+        if (count > 100) count = 100;
+        if (count < 1) count = 10;
 
         let html = "";
 
