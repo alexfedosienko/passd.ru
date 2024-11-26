@@ -39,6 +39,14 @@
         margin-bottom: 10px;
       }
 
+      @media screen and (max-width: 600px) {
+        .title {
+          font-size: 16px;
+          line-height: 20px;
+          margin-top: 10px;
+        }
+      }
+
       .result__items {
         border: #aaa 1px solid;
         font-size: 10pt;
@@ -58,6 +66,12 @@
         padding: 10px 0;
       }
 
+      @media screen and (max-width: 600px) {
+        .checkbox-group {
+          padding: 0;
+        }
+      }
+
       .checkbox-field {
         display: block;
         width: 100%;
@@ -65,6 +79,13 @@
       }
 
       .text-field {
+      }
+
+      @media screen and (max-width: 600px) {
+        .text-field {
+          display: block;
+          margin-bottom: 10px;
+        }
       }
 
       .text-field__title {
@@ -81,6 +102,14 @@
         grid-template-columns: repeat(2, 1fr);
         margin-top: 10px;
       }
+
+      @media screen and (max-width: 600px) {
+        .group {
+          grid-template-columns: repeat(1, 1fr);
+          margin-bottom: 10px;
+        }
+      }
+
     </style>
   </head>
   <body>
