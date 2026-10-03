@@ -1,330 +1,349 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Онлайн генератор паролей</title>
-    <meta name="description" content="Лучший онлайн генератор паролей passd.ru" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"
-    />
-    <meta name="yandex-verification" content="03e1aacf0f81af04" />
-    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Password Generator" />
-    <link rel="manifest" href="/favicon/site.webmanifest" />
-    <style>
-      * {
-        box-sizing: border-box;
-        font-family: "Courier New";
-      }
 
-      body {
-        background-color: #e9e9e9;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Онлайн генератор паролей</title>
+  <meta name="description" content="Лучший онлайн генератор паролей passd.ru" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" />
+  <meta name="yandex-verification" content="03e1aacf0f81af04" />
+  <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Password Generator" />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
+  <link rel="stylesheet" href="/style.css">
+</head>
 
-      .container {
-        width: 800px;
-        margin: 20px auto;
-        background-color: #fff;
-        padding: 10px;
-      }
+<body>
+  <div class="app">
+    <h1 class="page-title">Генератор паролей</h1>
 
-      @media screen and (max-width: 840px) {
-        .container {
-          width: calc(100% - 40px);
-          margin: 20px;
-        }
-      }
-
-      .title {
-        font-size: 20px;
-        line-height: 30px;
-        margin-bottom: 10px;
-      }
-
-      @media screen and (max-width: 600px) {
-        .title {
-          font-size: 16px;
-          line-height: 20px;
-          margin-top: 10px;
-        }
-      }
-
-      .result__items {
-        border: #aaa 1px solid;
-        font-size: 10pt;
-        background: #efefef;
-        color: black;
-        padding: 4px 45px;
-        margin: 0;
-      }
-
-      .result__item {
-        padding: 0;
-        margin: 0;
-        margin-bottom: 5px;
-      }
-
-      .checkbox-group {
-        padding: 10px 0;
-      }
-
-      @media screen and (max-width: 600px) {
-        .checkbox-group {
-          padding: 0;
-        }
-      }
-
-      .checkbox-field {
-        display: block;
-        width: 100%;
-        margin-bottom: 5px;
-      }
-
-      .text-field {
-      }
-
-      @media screen and (max-width: 600px) {
-        .text-field {
-          display: block;
-          margin-bottom: 10px;
-        }
-      }
-
-      .text-field__title {
-        margin-bottom: 3px;
-        display: block;
-      }
-
-      .text-field__input {
-        width: 100%;
-        padding: 5px;
-      }
-      .group {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        margin-top: 10px;
-      }
-
-      @media screen and (max-width: 600px) {
-        .group {
-          grid-template-columns: repeat(1, 1fr);
-          margin-bottom: 10px;
-        }
-      }
-
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <form class="settings js-generate-form">
-        <div class="title">Настройки</div>
-        <label class="text-field">
-          <span class="text-field__title">Символы для генерации пароля</span>
-          <input
-            type="text"
-            class="text-field__input js-input-symbols js-generate"
-            value=""
-          />
-        </label>
-
-        <div class="group">
-          <div class="col">
-            <div class="checkbox-group">
-              <label class="checkbox-field">
-                <input
-                  type="checkbox"
-                  class="checkbox-field__input js-settings-checkbox"
-                  checked
-                  data-value="zyxwvutsrqponmlkjihgfedcba"
-                />
-                <span class="checkbox-field__title">Строчные буквы</span>
-              </label>
-              <label class="checkbox-field">
-                <input
-                  type="checkbox"
-                  class="checkbox-field__input js-settings-checkbox"
-                  checked
-                  data-value="ZYXWVUTSRQPONMLKJIHGFEDCBA"
-                />
-                <span class="checkbox-field__title">Заглавные буквы</span>
-              </label>
-              <label class="checkbox-field">
-                <input
-                  type="checkbox"
-                  class="checkbox-field__input js-settings-checkbox"
-                  checked
-                  data-value="1234567890"
-                />
-                <span class="checkbox-field__title">Цифры</span>
-              </label>
-              <label class="checkbox-field">
-                <input
-                  type="checkbox"
-                  class="checkbox-field__input js-settings-checkbox"
-                  data-value="!;%:?*()_+=-~/\>,.[]{}"
-                />
-                <span class="checkbox-field__title">Знаки</span>
-              </label>
-            </div>
+    <div class="card">
+      <div class="main-grid">
+        <div>
+          <span class="field-label">Использовать символы</span>
+          <div class="options-grid" id="optionsGrid">
+            <label class="checkbox-label">
+              <input type="checkbox" id="optLower" checked>
+              <span class="checkbox-custom">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              строчные
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="optUpper" checked>
+              <span class="checkbox-custom">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              заглавные
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="optDigits" checked>
+              <span class="checkbox-custom">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              цифры
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="optSpecial">
+              <span class="checkbox-custom">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              спецсимволы
+            </label>
           </div>
-          <div class="col">
-            <label class="text-field">
-              <span class="text-field__title">Количество паролей</span>
-              <input
-                type="number"
-                class="text-field__input js-input-count js-generate"
-                value="10"
-                max="100"
-                min="1"
-              />
-            </label>
 
-            <label class="text-field">
-              <span class="text-field__title">Длина пароля</span>
-              <input
-                type="number"
-                class="text-field__input js-input-length js-generate"
-                value="15"
-                max="30"
-                min="1"
-              />
-            </label>
+          <div class="mt-3">
+            <span class="field-label">Итоговый набор</span>
+            <div class="badge" id="lengthBadge"
+              style="width: 100%; justify-content: center; padding: 7px 12px; font-size: 11px;">
+              <span class="dot"></span>
+              <span id="lengthBadgeText">16 символов · строчные · заглавные · цифры</span>
+            </div>
           </div>
         </div>
 
-        <button type="submit">Сгенерировать пароли</button>
-      </form>
-      <div class="result">
-        <div class="title">Результат сгенерированных паролей:</div>
-        <ol class="result__items"></ol>
+        <div>
+          <div class="row-fields">
+            <div>
+              <label class="field-label" for="countInput">Кол-во паролей</label>
+              <input type="number" id="countInput" class="number-input" min="1" max="50" value="10">
+            </div>
+            <div>
+              <label class="field-label" for="lengthInput">Длина пароля</label>
+              <input type="number" id="lengthInput" class="number-input" min="1" max="128" value="16">
+            </div>
+          </div>
+
+          <button id="generateBtn" class="btn-generate mt-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.85 1.03 6.5 2.7L21 8"></path>
+              <path d="M21 3v5h-5"></path>
+            </svg>
+            Создать
+          </button>
+        </div>
       </div>
     </div>
-    <script>
-      const settingsCheckboxes = document.querySelectorAll(
-        ".js-settings-checkbox"
-      );
-      const regenerate = document.querySelectorAll(".js-generate");
 
-      const makeSymbolsString = () => {
-        let symbols = "";
-        settingsCheckboxes.forEach((checkbox) => {
-          if (checkbox.checked) {
-            symbols += checkbox.dataset.value;
-          }
-        });
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Пароли</span>
+        <span class="badge success" id="countBadge">
+          <span class="dot"></span>
+          <span id="countBadgeText">0 шт.</span>
+        </span>
+      </div>
 
-        if (document.querySelector(".js-input-symbols")) {
-          document.querySelector(".js-input-symbols").value = symbols;
-        }
-        makePasswords();
-      };
+      <div id="passwordsContainer" class="passwords-container">
+        <div class="empty-state" id="emptyState">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <div>Нажмите «Создать», чтобы сгенерировать пароли</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      const genPassword = (length, symbols) => {
-        let password = "";
-        for (var i = 0; i < length; i++) {
-          password += symbols.charAt(
-            Math.floor(Math.random() * symbols.length)
-          );
+  <script>
+    (function () {
+      'use strict';
+
+      const optLower = document.getElementById('optLower');
+      const optUpper = document.getElementById('optUpper');
+      const optDigits = document.getElementById('optDigits');
+      const optSpecial = document.getElementById('optSpecial');
+      const countInput = document.getElementById('countInput');
+      const lengthInput = document.getElementById('lengthInput');
+      const generateBtn = document.getElementById('generateBtn');
+      const passwordsContainer = document.getElementById('passwordsContainer');
+      const emptyState = document.getElementById('emptyState');
+      const lengthBadgeText = document.getElementById('lengthBadgeText');
+      const countBadgeText = document.getElementById('countBadgeText');
+
+      const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz';
+      const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const DIGITS = '0123456789';
+      const SPECIAL = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+      function updateLengthBadge() {
+        const len = parseInt(lengthInput.value, 10) || 0;
+        const parts = [];
+        if (optLower.checked) parts.push('строчные');
+        if (optUpper.checked) parts.push('заглавные');
+        if (optDigits.checked) parts.push('цифры');
+        if (optSpecial.checked) parts.push('спецсимволы');
+        const setDesc = parts.length ? parts.join(' · ') : 'не выбрано';
+        lengthBadgeText.textContent = len + ' символов · ' + setDesc;
+      }
+
+      function updateCountBadge(count) {
+        countBadgeText.textContent = count + ' шт.';
+      }
+
+      function getActiveCharset() {
+        let result = '';
+        if (optLower.checked) result += LOWERCASE;
+        if (optUpper.checked) result += UPPERCASE;
+        if (optDigits.checked) result += DIGITS;
+        if (optSpecial.checked) result += SPECIAL;
+        if (result.length === 0) result = LOWERCASE + DIGITS;
+        return result;
+      }
+
+      function generatePassword(charset, length) {
+        if (!charset || length <= 0) return '';
+        let password = '';
+        const charsetLength = charset.length;
+        const randomValues = new Uint32Array(length);
+        crypto.getRandomValues(randomValues);
+        for (let i = 0; i < length; i++) {
+          password += charset[randomValues[i] % charsetLength];
         }
         return password;
-      };
-
-      const makePasswords = () => {
-        let symbols = document.querySelector(".js-input-symbols").value;
-
-        let length = 0;
-        let count = 0;
-
-        if (document.querySelector(".js-input-length"))
-          length = Number(document.querySelector(".js-input-length").value);
-        if (length > 30) length = 30;
-        if (length <= 1) length = 15;
-
-        if (document.querySelector(".js-input-count"))
-          count = Number(document.querySelector(".js-input-count").value);
-        if (count > 100) count = 100;
-        if (count < 1) count = 10;
-
-        let html = "";
-
-        for (let index = 0; index < count; index++) {
-          html += `<li class="result__item">${genPassword(
-            length,
-            symbols
-          )}</li>`;
-        }
-
-        document.querySelector(".result__items").innerHTML = html;
-      };
-
-      if (settingsCheckboxes.length > 0) {
-        settingsCheckboxes.forEach((checkbox) => {
-          checkbox.addEventListener("click", makeSymbolsString);
-        });
       }
 
-      if (regenerate.length > 0) {
-        regenerate.forEach((el) => el.addEventListener("input", makePasswords));
-      }
-
-      document
-        .querySelector(".js-generate-form")
-        .addEventListener("submit", (e) => {
-          e.preventDefault();
-          makePasswords();
-        });
-
-      makeSymbolsString();
-      makePasswords();
-    </script>
-
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-      (function (m, e, t, r, i, k, a) {
-        m[i] =
-          m[i] ||
-          function () {
-            (m[i].a = m[i].a || []).push(arguments);
-          };
-        m[i].l = 1 * new Date();
-        for (var j = 0; j < document.scripts.length; j++) {
-          if (document.scripts[j].src === r) {
-            return;
+      async function copyToClipboard(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch (err) {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            document.execCommand('copy');
+            return true;
+          } catch (e) {
+            return false;
+          } finally {
+            document.body.removeChild(textarea);
           }
         }
-        (k = e.createElement(t)),
-          (a = e.getElementsByTagName(t)[0]),
-          (k.async = 1),
-          (k.src = r),
-          a.parentNode.insertBefore(k, a);
-      })(
-        window,
-        document,
-        "script",
-        "https://mc.yandex.ru/metrika/tag.js",
-        "ym"
-      );
+      }
 
-      ym(98499790, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: true,
+      function renderPasswords(passwords) {
+        passwordsContainer.innerHTML = '';
+
+        if (!passwords || passwords.length === 0) {
+          passwordsContainer.appendChild(emptyState);
+          updateCountBadge(0);
+          return;
+        }
+
+        updateCountBadge(passwords.length);
+
+        passwords.forEach((pwd, index) => {
+          const item = document.createElement('div');
+          item.className = 'password-item';
+          item.style.animationDelay = (index * 0.02) + 's';
+
+          const textSpan = document.createElement('span');
+          textSpan.className = 'password-text';
+          textSpan.textContent = pwd;
+
+          const copyBtn = document.createElement('button');
+          copyBtn.className = 'copy-btn';
+          copyBtn.textContent = 'Копировать';
+
+          copyBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const success = await copyToClipboard(pwd);
+            if (success) {
+              copyBtn.textContent = '✓';
+              copyBtn.classList.add('copied');
+              setTimeout(() => {
+                copyBtn.textContent = 'Копировать';
+                copyBtn.classList.remove('copied');
+              }, 1200);
+            }
+          });
+
+          item.addEventListener('click', async () => {
+            const success = await copyToClipboard(pwd);
+            if (success) {
+              copyBtn.textContent = '✓';
+              copyBtn.classList.add('copied');
+              setTimeout(() => {
+                copyBtn.textContent = 'Копировать';
+                copyBtn.classList.remove('copied');
+              }, 1200);
+            }
+          });
+
+          item.appendChild(textSpan);
+          item.appendChild(copyBtn);
+          passwordsContainer.appendChild(item);
+        });
+      }
+
+      function handleGenerate() {
+        let count = parseInt(countInput.value, 10);
+        let length = parseInt(lengthInput.value, 10);
+
+        if (isNaN(count) || count < 1) count = 1;
+        if (count > 50) count = 50;
+        if (isNaN(length) || length < 1) length = 1;
+        if (length > 128) length = 128;
+
+        countInput.value = count;
+        lengthInput.value = length;
+        updateLengthBadge();
+
+        const charset = getActiveCharset();
+        if (!charset || charset.length === 0) {
+          alert('Нет доступных символов для генерации.');
+          return;
+        }
+
+        const passwords = [];
+        for (let i = 0; i < count; i++) {
+          passwords.push(generatePassword(charset, length));
+        }
+
+        renderPasswords(passwords);
+      }
+
+      lengthInput.addEventListener('input', updateLengthBadge);
+      optLower.addEventListener('change', updateLengthBadge);
+      optUpper.addEventListener('change', updateLengthBadge);
+      optDigits.addEventListener('change', updateLengthBadge);
+      optSpecial.addEventListener('change', updateLengthBadge);
+
+      optLower.addEventListener('change', handleGenerate);
+      optUpper.addEventListener('change', handleGenerate);
+      optDigits.addEventListener('change', handleGenerate);
+      optSpecial.addEventListener('change', handleGenerate);
+
+      generateBtn.addEventListener('click', handleGenerate);
+
+      countInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') generateBtn.click();
       });
-    </script>
-    <noscript
-      ><div>
-        <img
-          src="https://mc.yandex.ru/watch/98499790"
-          style="position: absolute; left: -9999px"
-          alt=""
-        /></div
-    ></noscript>
-    <!-- /Yandex.Metrika counter -->
-  </body>
+      lengthInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') generateBtn.click();
+      });
+
+      updateLengthBadge();
+      handleGenerate();
+    })();
+  </script>
+
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] =
+        m[i] ||
+        function () {
+          (m[i].a = m[i].a || []).push(arguments);
+        };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) {
+        if (document.scripts[j].src === r) {
+          return;
+        }
+      }
+      (k = e.createElement(t)),
+        (a = e.getElementsByTagName(t)[0]),
+        (k.async = 1),
+        (k.src = r),
+        a.parentNode.insertBefore(k, a);
+    })(
+      window,
+      document,
+      "script",
+      "https://mc.yandex.ru/metrika/tag.js",
+      "ym"
+    );
+
+    ym(98499790, "init", {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true,
+    });
+  </script>
+  <noscript>
+    <div>
+      <img src="https://mc.yandex.ru/watch/98499790" style="position: absolute; left: -9999px" alt="" />
+    </div>
+  </noscript>
+</body>
+
 </html>
