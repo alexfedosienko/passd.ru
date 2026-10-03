@@ -1,0 +1,393 @@
+:root {
+    --bg-primary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-tertiary: #94a3b8;
+    --border-light: #f1f5f9;
+    --border-medium: #e2e8f0;
+    --bg-accent: #f1f5f9;
+    --success-bg: #ecfdf5;
+    --success-text: #065f46;
+    --warning-bg: #fffbeb;
+    --warning-text: #92400e;
+    --danger-bg: #fef2f2;
+    --danger-text: #991b1b;
+    --info-bg: #eff6ff;
+    --info-text: #1e40af;
+    --radius-card: 18px;
+    --radius-element: 10px;
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.35;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 16px 14px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.app {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ----- ЗАГОЛОВОК ----- */
+.page-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    padding-left: 2px;
+}
+
+/* ----- КАРТОЧКИ ----- */
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border-light);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.field-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--text-tertiary);
+    margin-bottom: 6px;
+}
+
+/* ----- БЕЙДЖИ ----- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    background-color: var(--bg-accent);
+    color: var(--text-secondary);
+}
+
+.badge .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--text-tertiary);
+}
+
+.badge.success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+}
+
+.badge.success .dot {
+    background-color: var(--success-text);
+}
+
+/* ----- СЕТКА ОСНОВНОГО БЛОКА ----- */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 640px) {
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ----- ЧЕКБОКСЫ ----- */
+.options-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 13px;
+    background-color: var(--bg-accent);
+    border-radius: 10px;
+    border: 1px solid var(--border-light);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 12.5px;
+    color: var(--text-primary);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.checkbox-label:active {
+    transform: scale(0.97);
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 17px;
+    height: 17px;
+    border-radius: 5px;
+    border: 1.5px solid var(--border-medium);
+    background-color: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-label input:checked+.checkbox-custom {
+    background-color: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+.checkbox-custom svg {
+    width: 10px;
+    height: 10px;
+    stroke: white;
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.checkbox-label input:checked+.checkbox-custom svg {
+    opacity: 1;
+}
+
+/* ----- ЧИСЛОВЫЕ ПОЛЯ ----- */
+.row-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.number-input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-element);
+    background-color: var(--bg-primary);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    outline: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.number-input::-webkit-outer-spin-button,
+.number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.number-input:focus {
+    border-color: var(--text-tertiary);
+    background-color: var(--bg-card);
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
+
+/* ----- КНОПКА "СОЗДАТЬ" ----- */
+.btn-generate {
+    width: 100%;
+    padding: 13px 20px;
+    background-color: var(--text-primary);
+    color: var(--bg-card);
+    border: none;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.btn-generate:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
+/* ----- ПОЛЕ ВЫВОДА ПАРОЛЕЙ ----- */
+.passwords-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    max-height: 340px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.passwords-container::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 520px) {
+    .passwords-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.password-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 12px;
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-element);
+    border: 1px solid var(--border-light);
+    transition: all 0.15s ease;
+    word-break: break-all;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    animation: fadeSlide 0.2s ease forwards;
+}
+
+.password-item:active {
+    background-color: var(--bg-accent);
+}
+
+.password-text {
+    font-family: 'SF Mono', 'Menlo', 'Roboto Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-primary);
+    word-break: break-all;
+    flex: 1;
+    letter-spacing: 0.1px;
+    line-height: 1.3;
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid var(--border-medium);
+    border-radius: 16px;
+    padding: 4px 9px;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+}
+
+.copy-btn:active {
+    background-color: var(--bg-accent);
+    transform: scale(0.95);
+}
+
+.copy-btn.copied {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border-color: var(--success-bg);
+}
+
+/* ----- ПУСТОЕ СОСТОЯНИЕ ----- */
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 20px 0;
+    text-align: center;
+    color: var(--text-tertiary);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.empty-state svg {
+    opacity: 0.3;
+    margin-bottom: 6px;
+}
+
+/* ----- УТИЛИТЫ ----- */
+.mt-3 {
+    margin-top: 12px;
+}
+
+.mt-2 {
+    margin-top: 8px;
+}
+
+@keyframes fadeSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 400px) {
+    body {
+        padding: 12px 10px 20px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .password-text {
+        font-size: 12px;
+    }
+}
